@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:17
+FROM openjdk:8
 
 COPY pom.xml usr/app/pom.xml
 COPY src usr/app/src
