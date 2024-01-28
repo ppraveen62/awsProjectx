@@ -9,6 +9,7 @@ phases:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 494627826775.dkr.ecr.ap-south-1.amazonaws.com
       - REPOSITORY_URI=494627826775.dkr.ecr.ap-south-1.amazonaws.com/projectx_ecr
       - IMAGE_TAG=$(echo $CODEBUILD_BUILD_ID | awk -F':' '{print $2}')
+      - REPO_NAME=projectx_ecr
   build:
     commands:
       - echo Build started on `date`
@@ -25,6 +26,6 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"__ECS_CONTAINER_NAME__","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"$REPO_NAME","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
