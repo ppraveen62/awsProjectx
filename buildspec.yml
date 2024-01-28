@@ -27,4 +27,4 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name”:"__ECS_CONTAINER_NAME__","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
-  files: imagedefinitions.json
+  files: -imagedefinitions.json

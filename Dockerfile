@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM maven:3.8.4-openjdk-17-slim
+FROM openjdk:17-alpine
 
 COPY pom.xml usr/app/pom.xml
 COPY src usr/app/src
