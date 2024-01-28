@@ -14,6 +14,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Build jar file
+      - mvn -version
       - mvn clean install
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
