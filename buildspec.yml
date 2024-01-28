@@ -8,8 +8,7 @@ phases:
       - aws --version
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - REPOSITORY_URI=494627826775.dkr.ecr.ap-south-1.amazonaws.com/projectx_ecr
-      - COMMIT_HASH=$(git rev-parse --short=7 HEAD)
-      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION
   build:
     commands:
       - echo Build started on `date`
