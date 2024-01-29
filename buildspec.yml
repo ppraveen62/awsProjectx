@@ -7,7 +7,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws --version
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 494627826775.dkr.ecr.ap-south-1.amazonaws.com
-      - REPOSITORY_URI=494627826775.dkr.ecr.ap-south-1.amazonaws.com/projectx_ecr
+      - REPOSITORY_URI=494627826775.dkr.ecr.ap-south-1.amazonaws.com/demo_ecr
       - IMAGE_TAG=$(echo $CODEBUILD_BUILD_ID | awk -F':' '{print $2}')
       - REPO_NAME=projectx_container_02
   build:
